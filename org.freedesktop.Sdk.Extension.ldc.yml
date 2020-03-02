@@ -26,6 +26,7 @@ modules:
         sha256: 868b8c07ab697306ea65f0006fc2b6b96db4df226e82f8f11cafbed6fa9ac561
     modules:
 
+      #FIXME: remove once https://github.com/ldc-developers/ldc/issues/3109 is resolved
       - name: llvm-6
         build-options:
           prefix: /usr/lib/sdk/ldc/bootstrap
@@ -62,16 +63,24 @@ modules:
             sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
 
   - name: ldc-cycle
-    only-arches:
-      - arm
     build-options:
       prefix: /usr/lib/sdk/ldc/cycle
       append-path: /usr/lib/sdk/ldc/bootstrap/bin
+      arch:
+        arm:
+          config-opts:
+            - -DLLVM_ROOT_DIR=/usr/lib/sdk/ldc/bootstrap
     buildsystem: cmake-ninja
-    config-opts:
-      - -DLLVM_ROOT_DIR=/usr/lib/sdk/ldc/bootstrap
     sources:
       - type: archive
+        skip-arches:
+          - arm
+        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.20.0/ldc-1.20.0-src.tar.gz
+        sha256: &ldc_src_sha256 49c9fdfe3a51c978385aae94f2e102f306102f6282215638f2ae3fb9ea8d3ab9
+      #FIXME: remove once https://github.com/ldc-developers/ldc/issues/2926 is resolved
+      - type: archive
+        only-arches:
+          - arm
         url: https://github.com/ldc-developers/ldc/releases/download/v1.12.0/ldc-1.12.0-src.tar.gz
         sha256: 952ba57a957079345333d3f6aaaac766cc49750859357c419efc0c897850b5b9
     cleanup:
@@ -79,15 +88,12 @@ modules:
 
   - name: ldc-source
     build-options:
-      append-path: /usr/lib/sdk/ldc/bootstrap/bin
-      arch:
-        arm:
-          prepend-path: /usr/lib/sdk/ldc/cycle/bin
+      prepend-path: /usr/lib/sdk/ldc/cycle/bin
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.20.0/ldc-1.20.0-src.tar.gz
-        sha256: 49c9fdfe3a51c978385aae94f2e102f306102f6282215638f2ae3fb9ea8d3ab9
+        url: *ldc_src_url
+        sha256: *ldc_src_sha256
 
   - name: dub
     buildsystem: simple
