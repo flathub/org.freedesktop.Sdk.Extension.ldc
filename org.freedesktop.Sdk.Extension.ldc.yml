@@ -8,7 +8,59 @@ separate-locales: false
 appstream-compose: false
 build-options:
   prefix: /usr/lib/sdk/ldc
+cleanup:
+  - /bootstrap
 modules:
+
+  - name: ldc-bootstrap
+    build-options:
+      prefix: /usr/lib/sdk/ldc/bootstrap
+      prepend-path: /usr/lib/sdk/ldc/bootstrap/bin
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DLLVM_ROOT_DIR=/usr/lib/sdk/ldc/bootstrap
+    builddir: true
+    sources:
+      - type: archive
+        url: "https://github.com/ldc-developers/ldc/releases/download/v0.17.6/ldc-0.17.6-src.tar.gz"
+        sha256: 868b8c07ab697306ea65f0006fc2b6b96db4df226e82f8f11cafbed6fa9ac561
+    modules:
+
+      - name: llvm-6
+        build-options:
+          prefix: /usr/lib/sdk/ldc/bootstrap
+          ldflags: -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+          strip: true
+          arch:
+            x86_64:
+              config-opts:
+                - -DLLVM_TARGETS_TO_BUILD=X86
+            aarch64:
+              config-opts:
+                - -DLLVM_TARGETS_TO_BUILD=AArch64
+            arm:
+              config-opts:
+                - -DLLVM_TARGETS_TO_BUILD=ARM
+        buildsystem: cmake-ninja
+        config-opts:
+          - -DCMAKE_BUILD_TYPE=MinSizeRel
+        builddir: true
+        sources:
+          - type: archive
+            url: "https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz"
+            sha256: b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2
+
+      - name: libconfig
+        build-options:
+          prefix: /usr/lib/sdk/ldc/bootstrap
+        config-opts:
+          - --enable-static
+          - --disable-shared
+        sources:
+          - type: archive
+            url: "https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz"
+            sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
+
   - name: ldc-source
     buildsystem: cmake-ninja
     config-opts:
