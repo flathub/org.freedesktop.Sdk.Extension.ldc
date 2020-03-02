@@ -62,25 +62,13 @@ modules:
             sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
 
   - name: ldc-source
+    build-options:
+      append-path: /usr/lib/sdk/ldc/bootstrap/bin
     buildsystem: cmake-ninja
-    config-opts:
-      - -DD_COMPILER="./ldc-bootstrap-bin/bin/ldmd2"
     sources:
       - type: archive
         url: https://github.com/ldc-developers/ldc/releases/download/v1.20.0/ldc-1.20.0-src.tar.gz
         sha256: 49c9fdfe3a51c978385aae94f2e102f306102f6282215638f2ae3fb9ea8d3ab9
-      - type: archive
-        only-arches:
-          - x86_64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.20.0/ldc2-1.20.0-linux-x86_64.tar.xz
-        sha256: ab2100228b9396ff1098006f7692d5638f4ebeb07890767499207c8aaf62ff09
-        dest: ldc-bootstrap-bin
-      - type: archive
-        only-arches:
-          - aarch64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.20.0/ldc2-1.20.0-linux-aarch64.tar.xz
-        sha256: 3b45670b11507fc613661f2fa9bb90611d6a75d8f2b422d2d76788f456a51295
-        dest: ldc-bootstrap-bin
 
   - name: dub
     buildsystem: simple
