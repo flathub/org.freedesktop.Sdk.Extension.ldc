@@ -61,9 +61,28 @@ modules:
             url: "https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz"
             sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
 
+  - name: ldc-cycle
+    only-arches:
+      - arm
+    build-options:
+      prefix: /usr/lib/sdk/ldc/cycle
+      append-path: /usr/lib/sdk/ldc/bootstrap/bin
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DLLVM_ROOT_DIR=/usr/lib/sdk/ldc/bootstrap
+    sources:
+      - type: archive
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.12.0/ldc-1.12.0-src.tar.gz
+        sha256: 952ba57a957079345333d3f6aaaac766cc49750859357c419efc0c897850b5b9
+    cleanup:
+      - "*"
+
   - name: ldc-source
     build-options:
       append-path: /usr/lib/sdk/ldc/bootstrap/bin
+      arch:
+        arm:
+          prepend-path: /usr/lib/sdk/ldc/cycle/bin
     buildsystem: cmake-ninja
     sources:
       - type: archive
