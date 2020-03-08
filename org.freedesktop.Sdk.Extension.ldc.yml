@@ -79,8 +79,8 @@ modules:
       - type: archive
         skip-arches:
           - arm
-        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.20.0/ldc-1.20.0-src.tar.gz
-        sha256: &ldc_src_sha256 49c9fdfe3a51c978385aae94f2e102f306102f6282215638f2ae3fb9ea8d3ab9
+        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.20.1/ldc-1.20.1-src.tar.gz
+        sha256: &ldc_src_sha256 2b21dfffb6efd2c2158bc83422765335aae34b709ebdc406bb026c21967a1aaf
       #FIXME: remove once https://github.com/ldc-developers/ldc/issues/2926 is resolved
       - type: archive
         only-arches:
