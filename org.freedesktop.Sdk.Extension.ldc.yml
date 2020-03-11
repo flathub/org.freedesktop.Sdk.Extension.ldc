@@ -99,15 +99,31 @@ modules:
         url: *ldc_src_url
         sha256: *ldc_src_sha256
 
+  - name: dtools
+    buildsystem: simple
+    build-options:
+      prepend-path: /usr/lib/sdk/ldc/bin
+    build-commands:
+      - ldmd2 -O -release ddemangle.d -ofddemangle
+      - ldmd2 -O -release DustMite/dustmite.d DustMite/splitter.d -ofdustmite
+      - ldmd2 -O -release rdmd.d -ofrdmd
+      - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/ldc/bin/
+    sources:
+      - type: archive
+        url: https://github.com/dlang/tools/archive/v2.091.0.tar.gz
+        sha256: e5a6a67fbb60a3e3228cd9966cf5b04fcc46f3c1d82ecde67009e3d8cbbd26c6
+
   - name: dub
     buildsystem: simple
+    build-options:
+      prepend-path: /usr/lib/sdk/ldc/bin
     build-commands:
-      - DC=/usr/lib/sdk/ldc/bin/ldmd2 GITVER="v1.19.0" ./build.sh
+      - DMD=ldmd2 GITVER="v1.20.0" ./build.d
       - install -s bin/dub /usr/lib/sdk/ldc/bin/
     sources:
       - type: archive
-        url: https://github.com/dlang/dub/archive/v1.19.0.zip
-        sha256: f7b9d71d51dafd1a4d153921eabf5e4cbac871ea14a1b65e643df15ec838bc33
+        url: https://github.com/dlang/dub/archive/v1.20.0.zip
+        sha256: 3d0181ec8b519d27dd8db633ce304118594e13f0a324c726a37f2b9d10b445ec
 
   - name: scripts
     buildsystem: simple
