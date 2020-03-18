@@ -134,7 +134,7 @@ modules:
         commands:
           - 'export PATH="$PATH:/usr/lib/sdk/ldc/bin"'
           - 'export LIBRARY_PATH="$LIBRARY_PATH:/usr/lib/sdk/ldc/lib"'
-          - 'export LD_LIBRARY_PATH="LD_LIBRARY_PATH:/usr/lib/sdk/ldc/lib"'
+          - 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/sdk/ldc/lib"'
         dest-filename: enable.sh
       - type: script
         commands:
