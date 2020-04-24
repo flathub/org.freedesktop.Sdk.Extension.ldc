@@ -79,8 +79,8 @@ modules:
       - type: archive
         skip-arches:
           - arm
-        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.20.1/ldc-1.20.1-src.tar.gz
-        sha256: &ldc_src_sha256 2b21dfffb6efd2c2158bc83422765335aae34b709ebdc406bb026c21967a1aaf
+        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.21.0/ldc-1.21.0-src.tar.gz
+        sha256: &ldc_src_sha256 50b7f929bf6b285c5b6618dd32162838daa2788298f25e669570df3fdc0716d8
       #FIXME: remove once https://github.com/ldc-developers/ldc/issues/2926 is resolved
       - type: archive
         only-arches:
@@ -110,20 +110,20 @@ modules:
       - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/ldc/bin/
     sources:
       - type: archive
-        url: https://github.com/dlang/tools/archive/v2.091.0.tar.gz
-        sha256: e5a6a67fbb60a3e3228cd9966cf5b04fcc46f3c1d82ecde67009e3d8cbbd26c6
+        url: https://github.com/dlang/tools/archive/v2.091.1.tar.gz
+        sha256: 15d385c04e46860d2fb8bbe736c9a9f4b2fcd9fdf0a6daf6f801177125660c68
 
   - name: dub
     buildsystem: simple
     build-options:
       prepend-path: /usr/lib/sdk/ldc/bin
     build-commands:
-      - DMD=ldmd2 GITVER="v1.20.0" ./build.d
+      - DMD=ldmd2 GITVER="v1.20.1" ./build.d
       - install -s bin/dub /usr/lib/sdk/ldc/bin/
     sources:
       - type: archive
-        url: https://github.com/dlang/dub/archive/v1.20.0.zip
-        sha256: 3d0181ec8b519d27dd8db633ce304118594e13f0a324c726a37f2b9d10b445ec
+        url: https://github.com/dlang/dub/archive/v1.20.1.zip
+        sha256: db0590bf58609300f6957095c6a9acbb38fd80c9b5ed9ee60f6fb4caa5416fb0
 
   - name: scripts
     buildsystem: simple
