@@ -71,6 +71,8 @@ modules:
       prefix: /usr/lib/sdk/ldc/cycle
       append-path: /usr/lib/sdk/ldc/bootstrap/bin
     buildsystem: cmake-ninja
+    config-opts: &ldc_config_opts
+      - -DLDC_WITH_LLD:BOOL=OFF
     sources:
       - type: archive
         url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.22.0/ldc-1.22.0-src.tar.gz
@@ -82,6 +84,7 @@ modules:
     build-options:
       prepend-path: /usr/lib/sdk/ldc/cycle/bin
     buildsystem: cmake-ninja
+    config-opts: *ldc_config_opts
     sources:
       - type: archive
         url: *ldc_src_url
