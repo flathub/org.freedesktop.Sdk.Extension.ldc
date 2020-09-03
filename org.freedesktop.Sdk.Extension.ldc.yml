@@ -77,16 +77,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        skip-arches:
-          - arm
         url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.22.0/ldc-1.22.0-src.tar.gz
         sha256: &ldc_src_sha256 866becac61fb225b0d55847fb5f206ff042d6a3ff63b671a474aa8b6a93d8988
-      #FIXME: remove once https://github.com/ldc-developers/ldc/issues/2926 is resolved
-      - type: archive
-        only-arches:
-          - arm
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.12.0/ldc-1.12.0-src.tar.gz
-        sha256: 952ba57a957079345333d3f6aaaac766cc49750859357c419efc0c897850b5b9
     cleanup:
       - "*"
 
