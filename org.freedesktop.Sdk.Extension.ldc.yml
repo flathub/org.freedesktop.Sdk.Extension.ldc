@@ -70,10 +70,6 @@ modules:
     build-options:
       prefix: /usr/lib/sdk/ldc/cycle
       append-path: /usr/lib/sdk/ldc/bootstrap/bin
-      arch:
-        arm:
-          config-opts:
-            - -DLLVM_ROOT_DIR=/usr/lib/sdk/ldc/bootstrap
     buildsystem: cmake-ninja
     sources:
       - type: archive
