@@ -66,13 +66,25 @@ modules:
             url: "https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz"
             sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
 
+  - name: lld
+    buildsystem: cmake-ninja
+    builddir: true
+    post-install:
+      - mv -v ${FLATPAK_DEST}/lib/$(gcc -print-multiarch)/* ${FLATPAK_DEST}/lib/
+      - rmdir ${FLATPAK_DEST}/lib/$(gcc -print-multiarch)
+    sources:
+      - type: archive
+        url: https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/lld-10.0.1.src.tar.xz
+        sha256: 591449e0aa623a6318d5ce2371860401653c48bb540982ccdd933992cb88df7a
+    cleanup:
+      - "*"
+
   - name: ldc-cycle
     build-options:
       prefix: /usr/lib/sdk/ldc/cycle
       append-path: /usr/lib/sdk/ldc/bootstrap/bin
+      ldflags: &ldc_ldflags -L/usr/lib/sdk/ldc/lib
     buildsystem: cmake-ninja
-    config-opts: &ldc_config_opts
-      - -DLDC_WITH_LLD:BOOL=OFF
     sources:
       - type: archive
         url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.22.0/ldc-1.22.0-src.tar.gz
@@ -83,8 +95,8 @@ modules:
   - name: ldc-source
     build-options:
       prepend-path: /usr/lib/sdk/ldc/cycle/bin
+      ldflags: *ldc_ldflags
     buildsystem: cmake-ninja
-    config-opts: *ldc_config_opts
     sources:
       - type: archive
         url: *ldc_src_url
