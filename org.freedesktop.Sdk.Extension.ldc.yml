@@ -85,10 +85,13 @@ modules:
       append-path: /usr/lib/sdk/ldc/bootstrap/bin
       ldflags: &ldc_ldflags -L/usr/lib/sdk/ldc/lib
     buildsystem: cmake-ninja
-    sources:
+    sources: &ldc_sources
       - type: archive
-        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.22.0/ldc-1.22.0-src.tar.gz
-        sha256: &ldc_src_sha256 866becac61fb225b0d55847fb5f206ff042d6a3ff63b671a474aa8b6a93d8988
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.22.0/ldc-1.22.0-src.tar.gz
+        sha256: 866becac61fb225b0d55847fb5f206ff042d6a3ff63b671a474aa8b6a93d8988
+      - type: shell
+        commands:
+          - sed "s/-lLLVMSymbolize/$(llvm-config --libs Symbolize)/g" -i CMakeLists.txt
     cleanup:
       - "*"
 
@@ -97,10 +100,7 @@ modules:
       prepend-path: /usr/lib/sdk/ldc/cycle/bin
       ldflags: *ldc_ldflags
     buildsystem: cmake-ninja
-    sources:
-      - type: archive
-        url: *ldc_src_url
-        sha256: *ldc_src_sha256
+    sources: *ldc_sources
 
   - name: dtools
     buildsystem: simple
