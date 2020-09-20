@@ -75,8 +75,8 @@ modules:
       - -DLDC_WITH_LLD:BOOL=OFF
     sources:
       - type: archive
-        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.22.0/ldc-1.22.0-src.tar.gz
-        sha256: &ldc_src_sha256 866becac61fb225b0d55847fb5f206ff042d6a3ff63b671a474aa8b6a93d8988
+        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.23.0/ldc-1.23.0-src.tar.gz
+        sha256: &ldc_src_sha256 6d18d233fb3a666113827bdb7d96a6ff0b54014bbeb76d0cd12a892e8490afb9
     cleanup:
       - "*"
 
@@ -101,8 +101,8 @@ modules:
       - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/ldc/bin/
     sources:
       - type: archive
-        url: https://github.com/dlang/tools/archive/v2.092.1.tar.gz
-        sha256: 8db4d21c6348fc25143d532e56f345198a384cce85c08979aca2476211e15113
+        url: https://github.com/dlang/tools/archive/v2.093.1.tar.gz
+        sha256: deceea44f176b31703a11a71e827416bfc4172a368e7fa0eceece8f397cb1553
 
   - name: dub
     buildsystem: simple
@@ -113,8 +113,8 @@ modules:
       - install -s bin/dub /usr/lib/sdk/ldc/bin/
     sources:
       - type: archive
-        url: https://github.com/dlang/dub/archive/v1.21.0.zip
-        sha256: 9fe7f1c4f0fafa626718b1e7ad4a87bd6ad09117f63b4dcf995bb78df8c20189
+        url: https://github.com/dlang/dub/archive/v1.22.0.zip
+        sha256: bfae73a25cced88886e8b93ef5209dfc5dc2030a7068abba994ebacb5c8e3701
 
   - name: scripts
     buildsystem: simple
