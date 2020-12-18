@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2020 Rasmus Thomsen <oss@cogitri.dev> -->
-<component type="runtime">
+<component type="addon">
   <id>org.freedesktop.Sdk.Extension.ldc</id>
+  <extends>org.freedesktop.Sdk</extends>
   <name>ldc2</name>
   <summary>LDC DLang compiler SDK Extension for the Freedesktop Flatpak runtime</summary>
   <metadata_license>CC0-1.0</metadata_license>
