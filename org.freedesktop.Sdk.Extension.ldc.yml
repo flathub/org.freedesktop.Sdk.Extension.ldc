@@ -78,21 +78,28 @@ modules:
     config-opts: &ldc_config_opts
       - -DLDC_WITH_LLD:BOOL=OFF
     sources:
-      - type: archive
-        url: &ldc_src_url https://github.com/ldc-developers/ldc/releases/download/v1.23.0/ldc-1.23.0-src.tar.gz
-        sha256: &ldc_src_sha256 6d18d233fb3a666113827bdb7d96a6ff0b54014bbeb76d0cd12a892e8490afb9
+      - &ldc-source
+        type: archive
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.23.0/ldc-1.23.0-src.tar.gz
+        sha256: 6d18d233fb3a666113827bdb7d96a6ff0b54014bbeb76d0cd12a892e8490afb9
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | sub("^[vV]"; "")
+          url-query: >-
+            .assets | map(select(.name=="ldc-\($version)-src.tar.gz")) | first | .browser_download_url
+          is-main-source: true
     cleanup:
       - "*"
 
-  - name: ldc-source
+  - name: ldc
     build-options:
       prepend-path: /usr/lib/sdk/ldc/cycle/bin
     buildsystem: cmake-ninja
     config-opts: *ldc_config_opts
     sources:
-      - type: archive
-        url: *ldc_src_url
-        sha256: *ldc_src_sha256
+      - *ldc-source
 
   - name: dtools
     buildsystem: simple
