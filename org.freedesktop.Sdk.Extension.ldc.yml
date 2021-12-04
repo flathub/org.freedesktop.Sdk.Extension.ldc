@@ -120,12 +120,18 @@ modules:
     build-options:
       prepend-path: /usr/lib/sdk/ldc/bin
     build-commands:
-      - DMD=ldmd2 GITVER="v1.21.0" ./build.d
+      - DMD=ldmd2 ./build.d
       - install -s bin/dub /usr/lib/sdk/ldc/bin/
     sources:
-      - type: archive
-        url: https://github.com/dlang/dub/archive/v1.22.0.zip
-        sha256: bfae73a25cced88886e8b93ef5209dfc5dc2030a7068abba994ebacb5c8e3701
+      - type: git
+        url: https://github.com/dlang/dub.git
+        tag: v1.22.0
+        commit: 8e3d4c13dc95ce5a4cdf9f41fd537e1ea1c77cd9
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/dlang/dub/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | sub("^[vV]"; "")
 
   - name: scripts
     buildsystem: simple
