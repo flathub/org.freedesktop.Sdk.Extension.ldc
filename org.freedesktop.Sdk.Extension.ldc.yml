@@ -26,7 +26,7 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url: "https://github.com/ldc-developers/ldc/releases/download/v0.17.6/ldc-0.17.6-src.tar.gz"
+        url: https://github.com/ldc-developers/ldc/releases/download/v0.17.6/ldc-0.17.6-src.tar.gz
         sha256: 868b8c07ab697306ea65f0006fc2b6b96db4df226e82f8f11cafbed6fa9ac561
     modules:
 
@@ -56,7 +56,7 @@ modules:
         builddir: true
         sources:
           - type: archive
-            url: "https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz"
+            url: https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz
             sha256: b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2
 
       - name: libconfig
@@ -67,7 +67,7 @@ modules:
           - --disable-shared
         sources:
           - type: archive
-            url: "https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz"
+            url: https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz
             sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
 
   - name: ldc-cycle
@@ -80,8 +80,8 @@ modules:
     sources:
       - &ldc-source
         type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.23.0/ldc-1.23.0-src.tar.gz
-        sha256: 6d18d233fb3a666113827bdb7d96a6ff0b54014bbeb76d0cd12a892e8490afb9
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.28.0/ldc-1.28.0-src.tar.gz
+        sha256: 17fee8bb535bcb8cda0a45947526555c46c045f302a7349cc8711b254e54cf09
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -91,7 +91,7 @@ modules:
             .assets | map(select(.name=="ldc-\($version)-src.tar.gz")) | first | .browser_download_url
           is-main-source: true
     cleanup:
-      - "*"
+      - '*'
 
   - name: ldc
     build-options:
@@ -107,14 +107,14 @@ modules:
       prepend-path: /usr/lib/sdk/ldc/bin
     build-commands:
       - ldmd2 -O -release ddemangle.d -ofddemangle
-      - ldmd2 -O -release DustMite/dustmite.d DustMite/splitter.d -ofdustmite
+      - ldmd2 -O -release DustMite/dustmite.d DustMite/splitter.d DustMite/polyhash.d -ofdustmite
       - ldmd2 -O -release rdmd.d -ofrdmd
       - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/ldc/bin/
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.093.1
-        commit: 9e81ff625844f378622c94012c78e38c720758b9
+        tag: v2.098.0
+        commit: 63b3867816e13ce5f074fd4342ca240d901f4e31
         x-checker-data:
           type: git
           tag-pattern: ^v([\d\.]+)$
@@ -129,8 +129,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dub.git
-        tag: v1.22.0
-        commit: 8e3d4c13dc95ce5a4cdf9f41fd537e1ea1c77cd9
+        tag: v1.23.0
+        commit: 4395f8f8fc9a8b3d47fec5e09b002ac75e3b2083
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dub/releases/latest
@@ -140,18 +140,19 @@ modules:
   - name: scripts
     buildsystem: simple
     build-commands:
-      - 'cp {install,enable}.sh /usr/lib/sdk/ldc'
+      - cp {install,enable}.sh /usr/lib/sdk/ldc
     sources:
       - type: script
         commands:
-          - 'export PATH="$PATH:/usr/lib/sdk/ldc/bin"'
-          - 'export LIBRARY_PATH="$LIBRARY_PATH:/usr/lib/sdk/ldc/lib"'
-          - 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/sdk/ldc/lib"'
+          - export PATH="$PATH:/usr/lib/sdk/ldc/bin"
+          - export LIBRARY_PATH="$LIBRARY_PATH:/usr/lib/sdk/ldc/lib"
+          - export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/sdk/ldc/lib"
         dest-filename: enable.sh
       - type: script
         commands:
-          - 'mkdir -p ${FLATPAK_DEST}/lib'
-          - 'cp -r /usr/lib/sdk/ldc/lib/lib{druntime,phobos2}-ldc-shared.so* /usr/lib/sdk/ldc/lib/libldc-jit.so* ${FLATPAK_DEST}/lib/'
+          - mkdir -p ${FLATPAK_DEST}/lib
+          - cp -r /usr/lib/sdk/ldc/lib/lib{druntime,phobos2}-ldc-shared.so* /usr/lib/sdk/ldc/lib/libldc-jit.so*
+            ${FLATPAK_DEST}/lib/
         dest-filename: install.sh
 
   - name: appdata
@@ -159,7 +160,8 @@ modules:
     build-commands:
       - mkdir -p ${FLATPAK_DEST}/share/metainfo
       - cp ${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo
-      - appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}
+      - appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak
+        ${FLATPAK_ID}
     sources:
       - type: file
         path: org.freedesktop.Sdk.Extension.ldc.metainfo.xml

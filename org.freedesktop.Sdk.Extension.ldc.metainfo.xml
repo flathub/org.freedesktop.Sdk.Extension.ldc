@@ -16,8 +16,11 @@
   </description>
   <url type="homepage">http://wiki.dlang.org/LDC</url>
   <update_contact>oss@cogitri.dev</update_contact>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <project_license>BSD-3-Clause AND BSL-1.0 AND (Artistic-1.0 OR GPL-2.0-or-later) AND NCSA AND MIT</project_license>
   <developer_name>LDC developers</developer_name>
   <url type="bugtracker">https://github.com/ldc-developers/ldc</url>
+  <releases>
+    <release version="1.28.0" date="2021-10-19"/>
+  </releases>
 </component>
