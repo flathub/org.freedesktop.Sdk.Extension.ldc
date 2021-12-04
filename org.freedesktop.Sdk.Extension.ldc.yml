@@ -111,9 +111,13 @@ modules:
       - ldmd2 -O -release rdmd.d -ofrdmd
       - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/ldc/bin/
     sources:
-      - type: archive
-        url: https://github.com/dlang/tools/archive/v2.093.1.tar.gz
-        sha256: deceea44f176b31703a11a71e827416bfc4172a368e7fa0eceece8f397cb1553
+      - type: git
+        url: https://github.com/dlang/tools.git
+        tag: v2.093.1
+        commit: 9e81ff625844f378622c94012c78e38c720758b9
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d\.]+)$
 
   - name: dub
     buildsystem: simple
