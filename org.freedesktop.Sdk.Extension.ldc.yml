@@ -107,13 +107,14 @@ modules:
       prepend-path: /usr/lib/sdk/ldc/bin
     build-commands:
       - ldmd2 -O -release ddemangle.d -ofddemangle
-      - ldmd2 -O -release DustMite/dustmite.d DustMite/splitter.d DustMite/polyhash.d -ofdustmite
+      - ldmd2 -O -release DustMite/dustmite.d DustMite/splitter.d DustMite/polyhash.d
+        -ofdustmite
       - ldmd2 -O -release rdmd.d -ofrdmd
       - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/ldc/bin/
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.098.0
+        tag: v2.098.1
         commit: 63b3867816e13ce5f074fd4342ca240d901f4e31
         x-checker-data:
           type: git
