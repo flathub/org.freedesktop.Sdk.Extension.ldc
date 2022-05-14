@@ -114,8 +114,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.099.1
-        commit: 8896a8e2dba6886a2d635ff28100b80d7831d0bd
+        tag: v2.100.0
+        commit: 967b52f73472cd7be9b9818073ba93c871465f76
         x-checker-data:
           type: git
           tag-pattern: ^v([\d\.]+)$
