@@ -80,8 +80,8 @@ modules:
     sources:
       - &ldc-source
         type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.29.0/ldc-1.29.0-src.tar.gz
-        sha256: d0c066eb965467625d9c5e75c00c583451b9ffa363601f9e37275ca8a8aea140
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc-1.30.0-src.tar.gz
+        sha256: fdbb376f08242d917922a6a22a773980217fafa310046fc5d6459490af23dacd
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -130,8 +130,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dub.git
-        tag: v1.23.0
-        commit: 4395f8f8fc9a8b3d47fec5e09b002ac75e3b2083
+        tag: v1.29.0
+        commit: 131ba4ecb5a4c9683c53ec4bc1c1c44a734bf8fa
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dub/releases/latest
