@@ -17,58 +17,38 @@ cleanup:
 modules:
 
   - name: ldc-bootstrap
-    build-options:
-      prefix: /usr/lib/sdk/ldc/bootstrap
-      prepend-path: /usr/lib/sdk/ldc/bootstrap/bin
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DLLVM_ROOT_DIR=/usr/lib/sdk/ldc/bootstrap
-    builddir: true
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /usr/lib/sdk/ldc/bootstrap
+      - cp -av * /usr/lib/sdk/ldc/bootstrap/
+    cleanup:
+      - '*'
     sources:
       - type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v0.17.6/ldc-0.17.6-src.tar.gz
-        sha256: 868b8c07ab697306ea65f0006fc2b6b96db4df226e82f8f11cafbed6fa9ac561
-    modules:
+        only-arches:
+          - x86_64
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc2-1.30.0-linux-x86_64.tar.xz
+        sha256: 5784d4cc47d0845af0897d3b7473a08dd0281a4cdabac0a486740840d014fde1
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
+          version-query: .tag_name | sub("^[vV]"; "")
+          url-query: >-
+            .assets | map(select(.name=="ldc2-\($version)-linux-x86_64.tar.xz")) |
+            first | .browser_download_url
 
-      #FIXME: remove once https://github.com/ldc-developers/ldc/issues/3109 is resolved
-      - name: llvm-6
-        build-options:
-          prefix: /usr/lib/sdk/ldc/bootstrap
-          ldflags: -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
-          cflags: -O2 -g0
-          cflags-override: true
-          cxxflags: -O2 -g0
-          cxxflags-override: true
-          strip: true
-          arch:
-            x86_64:
-              config-opts:
-                - -DLLVM_TARGETS_TO_BUILD=X86
-            aarch64:
-              config-opts:
-                - -DLLVM_TARGETS_TO_BUILD=AArch64
-            arm:
-              config-opts:
-                - -DLLVM_TARGETS_TO_BUILD=ARM
-        buildsystem: cmake-ninja
-        config-opts:
-          - -DCMAKE_BUILD_TYPE=MinSizeRel
-        builddir: true
-        sources:
-          - type: archive
-            url: https://releases.llvm.org/6.0.1/llvm-6.0.1.src.tar.xz
-            sha256: b6d6c324f9c71494c0ccaf3dac1f16236d970002b42bb24a6c9e1634f7d0f4e2
-
-      - name: libconfig
-        build-options:
-          prefix: /usr/lib/sdk/ldc/bootstrap
-        config-opts:
-          - --enable-static
-          - --disable-shared
-        sources:
-          - type: archive
-            url: https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz
-            sha256: 7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
+      - type: archive
+        only-arches:
+          - aarch64
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc2-1.30.0-linux-aarch64.tar.xz
+        sha256: 9137a096e6fbe62bff8d658d3c29f5e5a08601b99c93445097a2fb6c5394bbb6
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
+          version-query: .tag_name | sub("^[vV]"; "")
+          url-query: >-
+            .assets | map(select(.name=="ldc2-\($version)-linux-aarch64.tar.xz"))
+            | first | .browser_download_url
 
   - name: ldc-cycle
     build-options:
@@ -80,8 +60,8 @@ modules:
     sources:
       - &ldc-source
         type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.29.0/ldc-1.29.0-src.tar.gz
-        sha256: d0c066eb965467625d9c5e75c00c583451b9ffa363601f9e37275ca8a8aea140
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc-1.30.0-src.tar.gz
+        sha256: fdbb376f08242d917922a6a22a773980217fafa310046fc5d6459490af23dacd
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -114,7 +94,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.100.1
+        tag: v2.100.2
         commit: 7ab9a6c650e7c7bdec559c9ef5b73bccfa1f6dbc
         x-checker-data:
           type: git
@@ -130,8 +110,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dub.git
-        tag: v1.23.0
-        commit: 4395f8f8fc9a8b3d47fec5e09b002ac75e3b2083
+        tag: v1.29.0
+        commit: 131ba4ecb5a4c9683c53ec4bc1c1c44a734bf8fa
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dub/releases/latest
