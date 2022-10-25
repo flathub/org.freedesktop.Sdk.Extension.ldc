@@ -110,8 +110,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dub.git
-        tag: v1.29.0
-        commit: 131ba4ecb5a4c9683c53ec4bc1c1c44a734bf8fa
+        tag: v1.28.0
+        commit: 305b8c2ec986032357821a307a55c7afc7d4aa6b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dub/releases/latest
