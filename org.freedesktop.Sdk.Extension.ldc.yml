@@ -94,8 +94,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.101.1
-        commit: fae3b69cb9b51ea0a6ca5d7f4c818bf9ce90f21c
+        tag: v2.102.2
+        commit: 3e46fadc8bf1755603d8e54b04b48d6795f3f0a7
         x-checker-data:
           type: git
           tag-pattern: ^v([\d\.]+)$
@@ -110,8 +110,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dub.git
-        tag: v1.30.0
-        commit: 37656524a8448315331883630f99f305664a9240
+        tag: v1.31.1
+        commit: cedf3155fa9201db8996bcff12064b813df6ac69
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dub/releases/latest
