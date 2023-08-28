@@ -27,8 +27,8 @@ modules:
       - type: archive
         only-arches:
           - x86_64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc2-1.30.0-linux-x86_64.tar.xz
-        sha256: 5784d4cc47d0845af0897d3b7473a08dd0281a4cdabac0a486740840d014fde1
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.34.0/ldc2-1.34.0-linux-x86_64.tar.xz
+        sha256: 7279acc4696c125484da255072cf8a5472ac28cbfa5d88a7e0df9785416dfc15
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -40,8 +40,8 @@ modules:
       - type: archive
         only-arches:
           - aarch64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc2-1.30.0-linux-aarch64.tar.xz
-        sha256: 9137a096e6fbe62bff8d658d3c29f5e5a08601b99c93445097a2fb6c5394bbb6
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.34.0/ldc2-1.34.0-linux-aarch64.tar.xz
+        sha256: 2d10fcd7bb86d1731fea2f866aa0a2fef0ee5115385889e1142794f9d02d1da1
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -60,8 +60,8 @@ modules:
     sources:
       - &ldc-source
         type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.30.0/ldc-1.30.0-src.tar.gz
-        sha256: fdbb376f08242d917922a6a22a773980217fafa310046fc5d6459490af23dacd
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.34.0/ldc-1.34.0-src.tar.gz
+        sha256: 3005c6e9c79258538c83979766767a59e3d74f3cb90ac2cb0dce5d7573beb719
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -94,8 +94,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.101.1
-        commit: fae3b69cb9b51ea0a6ca5d7f4c818bf9ce90f21c
+        tag: v2.105.0
+        commit: f32b4269d792bb8404a3e6f3cf5d9fc054bc4b6f
         x-checker-data:
           type: git
           tag-pattern: ^v([\d\.]+)$
@@ -110,8 +110,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dub.git
-        tag: v1.30.0
-        commit: 37656524a8448315331883630f99f305664a9240
+        tag: v1.33.0
+        commit: 54339dff7ce9ec24eda550f8055354f712f15800
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dub/releases/latest
