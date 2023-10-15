@@ -40,8 +40,8 @@ modules:
       - type: archive
         only-arches:
           - aarch64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.34.0/ldc2-1.34.0-linux-aarch64.tar.xz
-        sha256: 2d10fcd7bb86d1731fea2f866aa0a2fef0ee5115385889e1142794f9d02d1da1
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.35.0/ldc2-1.35.0-linux-aarch64.tar.xz
+        sha256: 8a2f21a3cb5b16652ce1e43196f04a45f6dbd7502adc01e65d3ffd9475b72355
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -94,7 +94,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.105.1
+        tag: v2.105.2
         commit: f32b4269d792bb8404a3e6f3cf5d9fc054bc4b6f
         x-checker-data:
           type: git
