@@ -27,8 +27,8 @@ modules:
       - type: archive
         only-arches:
           - x86_64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.35.0/ldc2-1.35.0-linux-x86_64.tar.xz
-        sha256: 4cb0ea9ba1a758b4b4bed84c56f4c5249fe87766a2d90e25170be282dee2b0ab
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.36.0/ldc2-1.36.0-linux-x86_64.tar.xz
+        sha256: 2d418462d1c3909f5889298d97de061d023850a371ea9d418fc3fd2d4b7e8b19
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -40,8 +40,8 @@ modules:
       - type: archive
         only-arches:
           - aarch64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.35.0/ldc2-1.35.0-linux-aarch64.tar.xz
-        sha256: 8a2f21a3cb5b16652ce1e43196f04a45f6dbd7502adc01e65d3ffd9475b72355
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.36.0/ldc2-1.36.0-linux-aarch64.tar.xz
+        sha256: 11cb6c554b351a00525089659c97a0e6fc568b1814e69407600315997d1852eb
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -60,8 +60,8 @@ modules:
     sources:
       - &ldc-source
         type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.35.0/ldc-1.35.0-src.tar.gz
-        sha256: 6e296993706c76c093e609139aa0b3f8704355fa0f3756f6758d78d44226dfa0
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.36.0/ldc-1.36.0-src.tar.gz
+        sha256: a00c79073123a887c17f446c7782a49556a3512a3d35ab676b7d53ae1bb8d6ef
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -94,8 +94,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.105.3
-        commit: f32b4269d792bb8404a3e6f3cf5d9fc054bc4b6f
+        tag: v2.107.0
+        commit: c580be18e5670813595346dd367b86673f0c3b20
         x-checker-data:
           type: git
           tag-pattern: ^v([\d\.]+)$
