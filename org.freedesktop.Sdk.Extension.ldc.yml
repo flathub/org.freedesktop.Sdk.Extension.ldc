@@ -40,8 +40,8 @@ modules:
       - type: archive
         only-arches:
           - aarch64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.35.0/ldc2-1.35.0-linux-aarch64.tar.xz
-        sha256: 8a2f21a3cb5b16652ce1e43196f04a45f6dbd7502adc01e65d3ffd9475b72355
+        url: https://github.com/ldc-developers/ldc/releases/download/v1.37.0/ldc2-1.37.0-linux-aarch64.tar.xz
+        sha256: 6b1b740002bea1be67f758f9e40c1c629d08903062c6bf83b93af3b13b962c9f
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ldc-developers/ldc/releases/latest
@@ -94,8 +94,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.105.3
-        commit: f32b4269d792bb8404a3e6f3cf5d9fc054bc4b6f
+        tag: v2.107.1
+        commit: c580be18e5670813595346dd367b86673f0c3b20
         x-checker-data:
           type: git
           tag-pattern: ^v([\d\.]+)$
@@ -110,8 +110,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dub.git
-        tag: v1.33.0
-        commit: 54339dff7ce9ec24eda550f8055354f712f15800
+        tag: v1.36.0
+        commit: 0d4858eb473a31a058132c8692d499effdb1cb28
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dub/releases/latest
