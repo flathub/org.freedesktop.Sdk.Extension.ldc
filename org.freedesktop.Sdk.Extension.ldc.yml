@@ -7,11 +7,11 @@ build-extension: true
 separate-locales: false
 appstream-compose: false
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm16
+  - org.freedesktop.Sdk.Extension.llvm18
 build-options:
   prefix: /usr/lib/sdk/ldc
-  prepend-path: /usr/lib/sdk/llvm16/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm16/lib
+  prepend-path: /usr/lib/sdk/llvm18/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm18/lib
 cleanup:
   - /bootstrap
 modules:
