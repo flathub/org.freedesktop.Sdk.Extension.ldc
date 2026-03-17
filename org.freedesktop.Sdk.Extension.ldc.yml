@@ -1,16 +1,16 @@
 app-id: org.freedesktop.Sdk.Extension.ldc
-branch: '24.08'
+branch: '25.08'
 runtime: org.freedesktop.Sdk
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 build-extension: true
 separate-locales: false
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm18
+  - org.freedesktop.Sdk.Extension.llvm20
 build-options:
   prefix: /usr/lib/sdk/ldc
-  prepend-path: /usr/lib/sdk/llvm18/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm18/lib
+  prepend-path: /usr/lib/sdk/llvm20/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
 cleanup:
   - /bootstrap
 modules:
@@ -56,6 +56,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts: &ldc_config_opts
       - -DLDC_WITH_LLD:BOOL=OFF
+      - -DLDC_BUNDLE_LLVM_TOOLS=OFF
     sources:
       - &ldc-source
         type: archive
