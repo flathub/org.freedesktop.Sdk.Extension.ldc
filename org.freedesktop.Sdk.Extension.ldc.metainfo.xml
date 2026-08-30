@@ -21,8 +21,11 @@
   <developer_name>LDC developers</developer_name>
   <url type="bugtracker">https://github.com/ldc-developers/ldc</url>
   <releases>
-    <release version="1.42.0" date="2026-03-01">
+    <release version="1.43.0" date="2026-08-30">
       <description></description>
+    </release>
+    <release version="1.42.0" date="2026-03-01">
+      <description/>
     </release>
     <release version="1.39.0" date="2024-07-04"/>
     <release version="1.34.0" date="2023-08-26"/>
