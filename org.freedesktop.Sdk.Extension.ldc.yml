@@ -6,11 +6,11 @@ sdk: org.freedesktop.Sdk
 build-extension: true
 separate-locales: false
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm20
+  - org.freedesktop.Sdk.Extension.llvm22
 build-options:
   prefix: /usr/lib/sdk/ldc
-  prepend-path: /usr/lib/sdk/llvm20/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+  prepend-path: /usr/lib/sdk/llvm22/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm22/lib
 cleanup:
   - /bootstrap
 modules:
