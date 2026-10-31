@@ -26,7 +26,8 @@ modules:
       - type: archive
         only-arches:
           - x86_64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.43.0/ldc2-1.43.0-linux-x86_64.tar.xz
+        url: 
+          https://github.com/ldc-developers/ldc/releases/download/v1.43.0/ldc2-1.43.0-linux-x86_64.tar.xz
         sha256: 35805db60f47fd1a162b2035da84d96beec37e6d1e7b1edf60498a90acfaedce
         x-checker-data:
           type: json
@@ -39,7 +40,8 @@ modules:
       - type: archive
         only-arches:
           - aarch64
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.43.0/ldc2-1.43.0-linux-aarch64.tar.xz
+        url: 
+          https://github.com/ldc-developers/ldc/releases/download/v1.43.0/ldc2-1.43.0-linux-aarch64.tar.xz
         sha256: f2b24edc254d4b9944234f641de3c4b3a36d5752639ec30cb2bbe122931b2283
         x-checker-data:
           type: json
@@ -60,7 +62,8 @@ modules:
     sources:
       - &ldc-source
         type: archive
-        url: https://github.com/ldc-developers/ldc/releases/download/v1.43.0/ldc-1.43.0-src.tar.gz
+        url: 
+          https://github.com/ldc-developers/ldc/releases/download/v1.43.0/ldc-1.43.0-src.tar.gz
         sha256: d655aad0daf0ce9a17b2ffffb947bb79ec6968bc7fb88bc918316dbe78c616e7
         x-checker-data:
           type: json
@@ -94,7 +97,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.113.0
+        tag: v2.113.1
         commit: bde43cdec1faa2a6cbfad50685e32d9c39f1d10c
         x-checker-data:
           type: git
